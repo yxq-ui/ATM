@@ -18,11 +18,12 @@ public class ATM {
 
 
  public void start(){
+     while (true) {
      System.out.println("=======欢迎进入银行=======");
      System.out.println("1.登录账号");
      System.out.println("2.注册账号");
 
-     while (true) {
+
          System.out.println("请输入命令：");
          String command=sc.next();
        switch(command){
@@ -42,14 +43,22 @@ public class ATM {
                            while (true) {
                                System.out.println("========恭喜您登录成功==========");
                                currentAccount=loginAcc;
-                               showHome();
+                               boolean exit=showHome();
+                               if(exit){
+                                   currentAccount=null;
+                                   break;
+                               }
+
                            }
+                           break;
 
 
                        }else{
                            System.out.println("账号不存在，请仔细检查");
                        }
+
                    }
+                   break;
 
 
 
@@ -65,7 +74,7 @@ public class ATM {
 
  }
 
-    private void showHome() {
+    private boolean showHome() {
 
         System.out.println("1.卡号查询");
         System.out.println("2.余额查询");
@@ -133,11 +142,18 @@ public class ATM {
                 }
                 break;
                 case "7":
-
+                    System.out.println("确认要退出吗？");
+                    System.out.println("Y/N");
+                    String COMD= sc.next();
+                    if(COMD.equals("Y")){
+                        return true;
+                    }
+                          break;
 
 
 
         }
+        return false;
 
 
     }//展示登录主界面
