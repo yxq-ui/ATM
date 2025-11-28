@@ -189,7 +189,7 @@ public class ATM {
             } else {
                 System.out.println("密码错误请重新输入！");
             }
-              }//判断密码是否正确
+              }//判断密码是否正确.
 
         while (true) {
             String id="";
